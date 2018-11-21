@@ -12,7 +12,9 @@ chapter1.3.4 Linux内核参数的优化
 
 >>fs.file-max
 >>>最大并发数
+
 >>Q:为什么最大fd数和并发相关呢？
+
 >>>每一个来自client 的incoming connection都要占用一个fd,如下图所示：
 >>>![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png) 
 >>>每一个incoming connection并不会新占用一个本机端口号,如下图所示：
