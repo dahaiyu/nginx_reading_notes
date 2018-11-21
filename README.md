@@ -4,13 +4,15 @@ Reading notes of Understanding nginx
 
 chapter1.3.4 Linux内核参数的优化 
 --------------------------------
->修改内核参数的方法：
+>一、修改内核参数的方法：
 >>(1)通过/et/sysctl.conf文件；
 >>>修改/et/sysctl.conf对应参数；sysctl -p。
 -p[FILE], --load[=FILE] Load  in  sysctl  settings  from  the file specified or /etc/sysctl.conf if none given. 
+
 >>(2)直接通过proc文件系统修改。
 
->>fs.file-max
+>NGINX优化涉及到的常用内核参数：
+>>（1）fs.file-max
 >>>最大并发数
 
 >>Q:为什么最大fd数和并发相关呢？
@@ -23,16 +25,18 @@ chapter1.3.4 Linux内核参数的优化
 
 >>Q:Server端所能接受的incoming connections是否受限于端口号(65535)？
   
->>net.ipv4.tcp_tw_recycle
+>>（2）net.ipv4.tcp_tw_recycle
   
-    Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT connections much faster.  Instead of a predefined 2*MSL period 
+>>>Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT connections much faster.  Instead of a predefined 2*MSL period 
     of 60s, the host will use a timeout based on RTT estimate.  For LANs, it is usually several milliseconds. 
-  net.ipv4.tcp_tw_reuse
+    
+  （3）net.ipv4.tcp_tw_reuse
   
-    Setting tcp_tw_reuse to 1 will make a host reuse the same connection quickly for outgoing connections. 
-  net.ipv4.tcp_fin_timeout - INTEGER
+>>>Setting tcp_tw_reuse to 1 will make a host reuse the same connection quickly for outgoing connections. 
+    
+  （4）net.ipv4.tcp_fin_timeout - INTEGER
   
-    @Time to hold socket in state FIN-WAIT-2, if it was closed by our side. Peer can be broken and never close its side,
+>>>@Time to hold socket in state FIN-WAIT-2, if it was closed by our side. Peer can be broken and never close its side,
     or even died unexpectedly. Default value is 60sec.Usual value used in 2.2 was 180 seconds, you may restore
     it, but remember that if your machine is even underloaded WEB server,you risk to overflow memory with kilotons of dead sockets,
     FIN-WAIT-2 sockets are less dangerous than FIN-WAIT-1,because they eat maximum 1.5K of memory, but they tend to live longer.	
@@ -45,5 +49,5 @@ chapter1.3.4 Linux内核参数的优化
 >>Q:参考下图，回答问题：TCP 双方同时关闭时status transition?什么时候进行CLOSING状态？什么时候双方同时进入TIME_WAIT？
 ![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/tcp_status.png?raw=true)
 
->>net.ipv4.tcp_max_tw_buckets
+>>（5）et.ipv4.tcp_max_tw_buckets
 >>>/proc/sys/net/ipv4/tcp_max_tw_buckets: Maximal number of timewait sockets held by the system simultaneously. If this number is exceeded time-wait socket is immediately destroyed and a warning is printed. This limit exists only to prevent simple DoS attacks, you must not lower the limit artificially, but rather increase it (probably, after increasing installed memory), if network conditions require more than the default value.
