@@ -11,8 +11,8 @@ chapter1.3.4 Linux内核参数的优化
 
 >>(2)直接通过proc文件系统修改。
 
->NGINX优化涉及到的常用内核参数：
->>（1）fs.file-max
+>二、NGINX优化涉及到的常用内核参数：
+>>(1)fs.file-max
 >>>最大并发数
 
 >>Q:为什么最大fd数和并发相关呢？
@@ -30,11 +30,11 @@ chapter1.3.4 Linux内核参数的优化
 >>>Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT connections much faster.  Instead of a predefined 2*MSL period 
     of 60s, the host will use a timeout based on RTT estimate.  For LANs, it is usually several milliseconds. 
     
-  （3）net.ipv4.tcp_tw_reuse
+>>（3）net.ipv4.tcp_tw_reuse
   
 >>>Setting tcp_tw_reuse to 1 will make a host reuse the same connection quickly for outgoing connections. 
     
-  （4）net.ipv4.tcp_fin_timeout - INTEGER
+>>（4）net.ipv4.tcp_fin_timeout - INTEGER
   
 >>>@Time to hold socket in state FIN-WAIT-2, if it was closed by our side. Peer can be broken and never close its side,
     or even died unexpectedly. Default value is 60sec.Usual value used in 2.2 was 180 seconds, you may restore
