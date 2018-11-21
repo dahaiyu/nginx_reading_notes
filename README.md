@@ -7,7 +7,7 @@ chapter1.3.4 Linux内核参数的优化
 >修改内核参数的方法：
 >>(1)通过/et/sysctl.conf文件；
 >>>修改/et/sysctl.conf对应参数；sysctl -p。
->>>-p[FILE], --load[=FILE] Load  in  sysctl  settings  from  the file specified or /etc/sysctl.conf if none given. 
+-p[FILE], --load[=FILE] Load  in  sysctl  settings  from  the file specified or /etc/sysctl.conf if none given. 
 >>(2)直接通过proc文件系统修改。
 
 >>fs.file-max
@@ -16,10 +16,10 @@ chapter1.3.4 Linux内核参数的优化
 >>Q:为什么最大fd数和并发相关呢？
 
 >>>每一个来自client 的incoming connection都要占用一个fd,如下图所示：
->>>![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png) 
->>>每一个incoming connection并不会新占用一个本机端口号,如下图所示：
->>>![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/netstat_1.png?raw=true) 
->>>即socket accept一个新链接时，Local Address不需要占用一个新端口号，只需要占用一个fd。
+![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png) 
+每一个incoming connection并不会新占用一个本机端口号,如下图所示：
+![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/netstat_1.png?raw=true) 
+即socket accept一个新链接时，Local Address不需要占用一个新端口号，只需要占用一个fd。
 
 >>Q:Server端所能接受的incoming connections是否受限于端口号(65535)？
   
