@@ -4,6 +4,7 @@ Reading notes of Understanding nginx
 
 chapter1.3.4 Linux内核参数的优化 
     修改内核参数的方法：
+    
         (1)通过/et/sysctl.conf文件；
             修改/et/sysctl.conf对应参数；sysctl -p。
             -p[FILE], --load[=FILE] Load  in  sysctl  settings  from  the file specified or /etc/sysctl.conf if none given. 
