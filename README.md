@@ -14,9 +14,9 @@ chapter1.3.4 Linux内核参数的优化
     
     最大并发数，每一个来自client 的incoming connection都要占用一个fd.
     
-    ![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png)
     
     
+  ![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png)  
   net.ipv4.tcp_tw_recycle
   
     Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT connections much faster.  Instead of a predefined 2*MSL period 
