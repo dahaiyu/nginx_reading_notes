@@ -3,6 +3,7 @@ Reading notes of Understanding nginx
 
 
 chapter1.3.4 Linux内核参数的优化 
+--------------------------------
     修改内核参数的方法：
     
         (1)通过/et/sysctl.conf文件；
