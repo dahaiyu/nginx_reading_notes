@@ -7,8 +7,8 @@ chapter1.3.4 Linux内核参数的优化
         (1)通过/et/sysctl.conf文件；
             修改/et/sysctl.conf对应参数；sysctl -p。
             -p[FILE], --load[=FILE] Load  in  sysctl  settings  from  the file specified or /etc/sysctl.conf if none given. 
-        (2)修改/etc/sysctl.conf文件;
-            直接通过proc文件系统修改。
+            
+        (2)直接通过proc文件系统修改。
   fs.file-max
   
   net.ipv4.tcp_tw_reuse
