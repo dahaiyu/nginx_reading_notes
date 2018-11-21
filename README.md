@@ -13,7 +13,7 @@ chapter1.3.4 Linux内核参数的优化
   fs.file-max
     
     最大并发数，每一个来自client 的incoming connection都要占用一个fd.
-    ![Image text](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png)
+    ![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png)
     
     
   net.ipv4.tcp_tw_recycle
