@@ -41,7 +41,7 @@ chapter1.3.4 Linux内核参数的优化
     it, but remember that if your machine is even underloaded WEB server,you risk to overflow memory with kilotons of dead sockets,
     FIN-WAIT-2 sockets are less dangerous than FIN-WAIT-1,because they eat maximum 1.5K of memory, but they tend to live longer.	
     
-    @The length  of  time  in  seconds  it  takes to receive a final FIN before the socket is  always  closed.  
+>>@The length  of  time  in  seconds  it  takes to receive a final FIN before the socket is  always  closed.  
     This  is  strictly  a violation  of  the  TCP specification, but required to prevent denial-of-service attacks.
   
 >>Q:从上段文字可知，当client主动关闭，若迟迟没有收到server端的FIN, 则client 的传输控制块status什么时候会变为CLOSED?
