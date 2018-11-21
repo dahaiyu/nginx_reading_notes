@@ -45,4 +45,5 @@ chapter1.3.4 Linux内核参数的优化
 >>Q:参考下图，回答问题：TCP 双方同时关闭时status transition?什么时候进行CLOSING状态？什么时候双方同时进入TIME_WAIT？
 ![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/tcp_status.png?raw=true)
 
-  
+>>net.ipv4.tcp_max_tw_buckets
+>>>/proc/sys/net/ipv4/tcp_max_tw_buckets: Maximal number of timewait sockets held by the system simultaneously. If this number is exceeded time-wait socket is immediately destroyed and a warning is printed. This limit exists only to prevent simple DoS attacks, you must not lower the limit artificially, but rather increase it (probably, after increasing installed memory), if network conditions require more than the default value.
