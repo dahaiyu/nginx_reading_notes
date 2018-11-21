@@ -11,17 +11,17 @@ chapter1.3.4 Linux内核参数的优化
             
         (2)直接通过proc文件系统修改。
   fs.file-max
-  
-  net.ipv4.tcp_tw_reuse
-  
-    Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT 
-    connections much faster.  Instead of a predefined 2*MSL period 
-    of 60s, the host will use a timeout based on RTT estimate.  For 
-    LANs, it is usually several milliseconds. 
+    
+    最大并发数，每一个来自client 的incoming connection都要占用一个fd.
+    
+    
   net.ipv4.tcp_tw_recycle
   
-    Setting tcp_tw_reuse to 1 will make a host reuse the same 
-    connection quickly for outgoing connections. 
+    Setting tcp_tw_recycle to 1 makes a Linux host drop TIME_WAIT connections much faster.  Instead of a predefined 2*MSL period 
+    of 60s, the host will use a timeout based on RTT estimate.  For LANs, it is usually several milliseconds. 
+  net.ipv4.tcp_tw_reuse
+  
+    Setting tcp_tw_reuse to 1 will make a host reuse the same connection quickly for outgoing connections. 
   net.ipv4.tcp_fin_timeout - INTEGER
   
     @Time to hold socket in state FIN-WAIT-2, if it was closed by our side. Peer can be broken and never close its side,
