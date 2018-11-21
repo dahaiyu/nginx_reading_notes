@@ -37,6 +37,7 @@ chapter1.3.4 Linux内核参数的优化
     This  is  strictly  a violation  of  the  TCP specification, but required to prevent denial-of-service attacks.
   
 >>Q:client主动关闭，若迟迟没有收到server端的FIN, 则client 的传输控制块status什么时候会变为CLOSED?
+
 >>Q:参考下图，回答问题：TCP 双方同时关闭时status transition?什么时候进行CLOSING状态？什么时候双方同时进入TIME_WAIT？
 ![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/tcp_status.png?raw=true)
 
