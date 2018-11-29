@@ -17,13 +17,13 @@ chapter1.3.4 Linux内核参数的优化
 
 >>Q:为什么最大fd数和并发相关呢？
 
->>>每一个来自client 的incoming connection都要占用一个fd,如下图所示：
+>>>每一个来自client 的ingress connection都要占用一个fd,如下图所示：
 ![image](https://raw.githubusercontent.com/dahaiyu/nginx_reading_notes/master/img_folder/chapter1/lsof_fd.png) 
-每一个incoming connection并不会新占用一个本机端口号,如下图所示：
+每一个ingress connection并不会新占用一个本机端口号,如下图所示：
 ![image](https://github.com/dahaiyu/nginx_reading_notes/blob/master/img_folder/chapter1/netstat_1.png?raw=true) 
 即socket accept一个新链接时，Local Address不需要占用一个新端口号，只需要占用一个fd。
 
->>Q:Server端所能接受的incoming connections是否受限于端口号(65535)？
+>>Q:Server端所能接受的ingress connections是否受限于端口号(65535)？
   
 >>（2）net.ipv4.tcp_tw_recycle
   
@@ -51,3 +51,8 @@ chapter1.3.4 Linux内核参数的优化
 
 >>（5）et.ipv4.tcp_max_tw_buckets
 >>>/proc/sys/net/ipv4/tcp_max_tw_buckets: Maximal number of timewait sockets held by the system simultaneously. If this number is exceeded time-wait socket is immediately destroyed and a warning is printed. This limit exists only to prevent simple DoS attacks, you must not lower the limit artificially, but rather increase it (probably, after increasing installed memory), if network conditions require more than the default value.
+
+>>(6)常用配置选项:daemon、master_process on|off、error_log path、debug_connect IP|CIDR、worker_rlimit_*(core\nofile\sigpending)、
+env VAR|VAR=VALUE、work_processces、work_connections、log_file、accept_mutex、accept_mutex_delay、multi_accept、use、
+listen address:port [default_server(higher priority than server_name)|backlog=num|recvbuf=size|sndbuf=size|deferred|bind|ssl]、
+server_name(可以匹配多个时的匹配顺序)、
